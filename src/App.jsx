@@ -1,6 +1,11 @@
 import {useState} from 'react'
 import Proptypes from 'prop-types'
 
+const welcome = {
+  greeting: 'Hey',
+  title: 'React'
+}
+
 const stories = [
   {
     title: 'React',
@@ -20,14 +25,14 @@ const stories = [
   }
 ]
 
-const welcome = {
-  greeting: 'Hey',
-  title: 'React'
-}
-
-const Greeting = () => (
-  <h1>{welcome.greeting}, {welcome.title}!</h1>
+const Greeting = ({greeting, title}) => (
+  <h1>{greeting}, {title}!</h1>
 )
+
+Greeting.propTypes = {
+  greeting: Proptypes.string,
+  title: Proptypes.string,
+}
 
 const Search = ({searchTerm, onSearch}) => (
   <>
@@ -86,7 +91,7 @@ const Page = () => {
 
   return (
     <>
-      <Greeting />
+      <Greeting greeting={welcome.greeting} title={welcome.title} />
       <Search searchTerm={searchTerm} onSearch={handleSearch} />
 
       <hr />
