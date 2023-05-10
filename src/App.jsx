@@ -1,4 +1,7 @@
-const item_list = [
+import {useState} from 'react'
+import Proptypes from 'prop-types'
+
+const stories = [
   {
     title: 'React',
     url: 'https://reactjs.org',
@@ -26,38 +29,68 @@ const Greeting = () => (
   <h1>{welcome.greeting}, {welcome.title}!</h1>
 )
 
-const Search = () => (
+const Search = ({searchTerm, onSearch}) => (
   <>
     <label htmlFor="search">Search:</label>
-    <input id="search" type="text"></input>
+    <input id="search" type="text" onChange={onSearch}></input>
+
+    <p>Searching for <strong>{searchTerm}</strong></p>
   </>
 )
 
-const List = () => (
+Search.propTypes = {
+  onSearch: Proptypes.func,
+  searchTerm: Proptypes.string,
+}
+
+const ListItem = ({ item }) => (
+  <li>
+    <span>
+      <a href={item.url}>{item.title}</a>
+    </span>
+    <span>{item.author}</span>
+    <span>{item.num_comments}</span>
+    <span>{item.points}</span>
+  </li>
+)
+
+ListItem.propTypes = {
+  item: Proptypes.object
+}
+
+const List = ({ items }) => (
   <ul>
-    {item_list.map((item) => {
-      return (
-        <li key={item.objectID}>
-          <span>
-            <a href={item.url}>{item.title}</a>
-          </span>
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-        </li>
-      )
-    })}
+    {items.map((item) => (
+      <ListItem key={item.objectID} item={item} />
+    ))}
   </ul>
 )
 
+List.propTypes = {
+  items: Proptypes.array
+}
+
 const Page = () => {
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const searchedStories = stories.filter((story) => {
+    const lowerCaseStoryTitle = story.title.toLowerCase()
+    const lowerCaseSearchTerm = searchTerm.toLowerCase()
+
+    return lowerCaseStoryTitle.includes(lowerCaseSearchTerm)
+  })
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value)
+  }
+
   return (
     <>
       <Greeting />
-      <Search />
+      <Search searchTerm={searchTerm} onSearch={handleSearch} />
 
       <hr />
-      <List />
+      <List items={searchedStories} />
     </>
   )
 }
