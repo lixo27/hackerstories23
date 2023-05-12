@@ -1,11 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Template from './template'
 import dummyService from '../../services/Dummy'
 
 const { welcome, stories } = dummyService
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem('searchTerm') || 'React'
+  )
+
+  useEffect(() => {
+    localStorage.setItem('searchTerm', searchTerm)
+  }, [searchTerm])
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value)
+  }
 
   const searchedStories = stories.filter((story) => {
     const lowerCaseStoryTitle = story.title.toLowerCase()
@@ -13,10 +23,6 @@ const Home = () => {
 
     return lowerCaseStoryTitle.includes(lowerCaseSearchTerm)
   })
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value)
-  }
 
   return (
     <Template
