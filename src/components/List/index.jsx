@@ -3,7 +3,7 @@ import Proptypes from 'prop-types'
 const List = ({ items }) => (
     <ul>
         {items.map((item) => (
-            <ListItem key={item.objectID} item={item} />
+            <ListItem key={item.objectID} {...item} />
         ))}
     </ul>
 )
@@ -14,21 +14,21 @@ List.propTypes = {
 
 export default List
 
-const ListItem = ({ item }) => {
-    const { url, title, author, num_comments, points } = item
-
-    return (
-        <li>
-            <span>
-                <a href={url}>{title}</a>
-            </span>
-            <span>{author}</span>
-            <span>{num_comments}</span>
-            <span>{points}</span>
-        </li>
-    )
-}
+const ListItem = ({ url, title, author, num_comments, points }) => (
+    <li>
+        <span>
+            <a href={url}>{title}</a>
+        </span>
+        <span>{author}</span>
+        <span>{num_comments}</span>
+        <span>{points}</span>
+    </li>
+)
 
 ListItem.propTypes = {
-    item: Proptypes.object
+    url: Proptypes.string,
+    title: Proptypes.string,
+    author: Proptypes.string,
+    num_comments: Proptypes.number,
+    points: Proptypes.number,
 }
