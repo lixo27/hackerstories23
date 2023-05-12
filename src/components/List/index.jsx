@@ -14,16 +14,20 @@ List.propTypes = {
 
 export default List
 
-const ListItem = ({ item }) => (
-    <li>
-        <span>
-            <a href={item.url}>{item.title}</a>
-        </span>
-        <span>{item.author}</span>
-        <span>{item.num_comments}</span>
-        <span>{item.points}</span>
-    </li>
-)
+const ListItem = ({ item }) => {
+    const { url, title, author, num_comments, points } = item
+
+    return (
+        <li>
+            <span>
+                <a href={url}>{title}</a>
+            </span>
+            <span>{author}</span>
+            <span>{num_comments}</span>
+            <span>{points}</span>
+        </li>
+    )
+}
 
 ListItem.propTypes = {
     item: Proptypes.object

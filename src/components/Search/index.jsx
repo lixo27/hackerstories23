@@ -1,16 +1,16 @@
 import Proptypes from 'prop-types'
 
-const Search = ({ search, onSearch }) => (
+const Search = ({ searchTerm, onSearch }) => (
   <>
     <label htmlFor="search">Search:</label>
     <input id="search" type="text" onChange={onSearch}></input>
 
-    <p>Searching for <strong>{search}</strong></p>
+    <p>Searching for <strong>{searchTerm}</strong></p>
   </>
 )
 
 Search.propTypes = {
-  search: Proptypes.string,
+  searchTerm: Proptypes.string,
   onSearch: Proptypes.func,
 }
 
