@@ -2,8 +2,7 @@ import { useState } from 'react'
 import Template from './template'
 import dummyService from '../../services/Dummy'
 
-const welcome = dummyService.welcome
-const stories = dummyService.stories
+const { welcome, stories } = dummyService
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('')

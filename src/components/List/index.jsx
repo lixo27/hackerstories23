@@ -1,5 +1,19 @@
 import Proptypes from 'prop-types'
 
+const List = ({ items }) => (
+    <ul>
+        {items.map((item) => (
+            <ListItem key={item.objectID} item={item} />
+        ))}
+    </ul>
+)
+
+List.propTypes = {
+    items: Proptypes.array
+}
+
+export default List
+
 const ListItem = ({ item }) => (
     <li>
         <span>
@@ -13,18 +27,4 @@ const ListItem = ({ item }) => (
 
 ListItem.propTypes = {
     item: Proptypes.object
-}
-
-export default function List({ items }) {
-    return (
-        <ul>
-            {items.map((item) => (
-                <ListItem key={item.objectID} item={item} />
-            ))}
-        </ul>
-    )
-}
-
-List.propTypes = {
-    items: Proptypes.array
 }
