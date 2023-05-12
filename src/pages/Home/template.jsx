@@ -3,17 +3,15 @@ import Greeting from '../../components/Greeting'
 import List from '../../components/List'
 import Search from '../../components/Search'
 
-export default function Template({ welcome, searchTerm, onSearch, items }) {
-  return (
-    <>
-      <Greeting greeting={welcome.greeting} title={welcome.title} />
-      <Search searchTerm={searchTerm} onSearch={onSearch} />
+const Template = ({ welcome, searchTerm, onSearch, items }) => (
+  <>
+    <Greeting greeting={welcome.greeting} title={welcome.title} />
+    <Search searchTerm={searchTerm} onSearch={onSearch} />
 
-      <hr />
-      <List items={items} />
-    </>
-  )
-}
+    <hr />
+    <List items={items} />
+  </>
+)
 
 Template.propTypes = {
   welcome: Proptypes.object,
@@ -21,3 +19,5 @@ Template.propTypes = {
   onSearch: Proptypes.func,
   items: Proptypes.array
 }
+
+export default Template
