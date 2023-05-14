@@ -1,7 +1,7 @@
 import Proptypes from 'prop-types'
-import Search from '../../components/Search'
-import List from '../../features/Story/List'
-import Greeting from '../../features/Welcome/Greeting'
+import List from '../../features/Story/components/List'
+import Search from '../../features/Story/components/Search'
+import Greeting from '../../features/Welcome/components/Greeting'
 
 const Template = ({ welcome, searchTerm, onSearch, items }) => (
   <>

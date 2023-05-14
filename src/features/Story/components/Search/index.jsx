@@ -1,5 +1,5 @@
 import Proptypes from 'prop-types'
-import InputText from '../InputText'
+import InputText from '../../../../components/InputText'
 
 const Search = ({ searchTerm, onSearch }) => (
   <>
