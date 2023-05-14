@@ -1,25 +1,13 @@
-import { useState, useEffect } from 'react'
 import dummyStoryService from '../../features/Story/services/Dummy'
 import dummyWelcomeService from '../../features/Welcome/services/Dummy'
+import useStorageState from '../../hooks/useStorageState'
 import Template from './template'
 
 const { stories } = dummyStoryService
 const { welcome } = dummyWelcomeService
 
-const useStorageStage = (key, initialState) => {
-  const [value, setValue] = useState(
-    localStorage.getItem(key) || initialState
-  )
-
-  useEffect(() => {
-    localStorage.setItem(key, value)
-  }, [value, key])
-
-  return [value, setValue]
-}
-
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useStorageStage('searchTerm', 'React')
+  const [searchTerm, setSearchTerm] = useStorageState('searchTerm', 'React')
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value)
