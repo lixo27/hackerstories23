@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react'
-import Template from './template'
 import dummyService from '../../services/Dummy'
+import Template from './template'
 
 const { welcome, stories } = dummyService
 
-const Home = () => {
-  const [searchTerm, setSearchTerm] = useState(
-    localStorage.getItem('searchTerm') || 'React'
+const useStorageStage = (key, initialState) => {
+  const [value, setValue] = useState(
+    localStorage.getItem(key) || initialState
   )
 
   useEffect(() => {
-    localStorage.setItem('searchTerm', searchTerm)
-  }, [searchTerm])
+    localStorage.setItem(key, value)
+  }, [value, key])
+
+  return [value, setValue]
+}
+
+const Home = () => {
+  const [searchTerm, setSearchTerm] = useStorageStage('searchTerm', 'React')
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value)
