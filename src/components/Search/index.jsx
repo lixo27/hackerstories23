@@ -1,10 +1,12 @@
 import Proptypes from 'prop-types'
+import InputText from '../InputText'
 
 const Search = ({ searchTerm, onSearch }) => (
   <>
-    <label htmlFor="search">Search:</label>
-    <input id="search" type="text" value={searchTerm} onChange={onSearch}></input>
-
+    <InputText id="search" value={searchTerm} onChange={onSearch}>
+      <strong>Search:</strong>
+    </InputText>
+    
     <p>Searching for <strong>{searchTerm}</strong></p>
   </>
 )
