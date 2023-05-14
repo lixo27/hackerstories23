@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import dummyService from '../../services/Dummy'
+import dummyStoryService from '../../feature/Story/services/Dummy'
+import dummyWelcomeService from '../../feature/Welcome/services/Dummy'
 import Template from './template'
 
-const { welcome, stories } = dummyService
+const { stories } = dummyStoryService
+const { welcome } = dummyWelcomeService
 
 const useStorageStage = (key, initialState) => {
   const [value, setValue] = useState(

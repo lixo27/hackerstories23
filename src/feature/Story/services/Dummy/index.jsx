@@ -1,8 +1,4 @@
-const dummyService = {
-    welcome: {
-        greeting: 'Hey',
-        title: 'React'
-    },
+const dummyStoryService = {
     stories: [
         {
             title: 'React',
@@ -23,4 +19,4 @@ const dummyService = {
     ]
 }
 
-export default dummyService
+export default dummyStoryService

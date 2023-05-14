@@ -11,7 +11,7 @@ InputText.propTypes = {
     id: Proptypes.string,
     value: Proptypes.string,
     onChange: Proptypes.func,
-    children: Proptypes.children,
+    children: Proptypes.object,
 }
 
 export default InputText
