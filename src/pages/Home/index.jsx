@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import dummyStoryService from '../../feature/Story/services/Dummy'
-import dummyWelcomeService from '../../feature/Welcome/services/Dummy'
+import dummyStoryService from '../../features/Story/services/Dummy'
+import dummyWelcomeService from '../../features/Welcome/services/Dummy'
 import Template from './template'
 
 const { stories } = dummyStoryService
