@@ -6,7 +6,7 @@ import Greeting from '../../features/Welcome/components/Greeting'
 const Template = ({ welcome, searchTerm, onSearch, items }) => (
   <>
     <Greeting greeting={welcome.greeting} title={welcome.title} />
-    <Search searchTerm={searchTerm} onSearch={onSearch} />
+    <Search searchTerm={searchTerm} onSearch={onSearch} hasSearchFocus />
 
     <hr />
     <List items={items} />
