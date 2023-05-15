@@ -1,7 +1,7 @@
-import {filterStoriesByTitle} from '../../features/Story/services/Collection'
-import {stories} from '../../features/Story/services/Dummy'
-import {welcome} from '../../features/Welcome/services/Dummy'
-import useStorageState from '../../hooks/useStorageState'
+import {filterStoriesByTitle} from '../../features/Story/services/collection'
+import {stories} from '../../features/Story/services/dummy'
+import {welcome} from '../../features/Welcome/services/dummy'
+import {useStorageState} from '../../hooks'
 import Template from './template'
 
 const Home = () => {
