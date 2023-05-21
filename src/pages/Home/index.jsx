@@ -7,11 +7,20 @@ import Template from './template'
 const Home = () => {
   const [searchTerm, setSearchTerm] = useStorageState('searchTerm', 'React')
   const [stories, setStories] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
+
     getAsyncStories().then(result => {
       setStories(result.data.stories)
+      setIsLoading(false)
     })
+      .catch(() => {
+        setIsLoading(false)
+        setIsError(true)
+      })
   }, [])
 
   const searchedStories = filterStoriesByTitle(stories, searchTerm)
@@ -33,6 +42,8 @@ const Home = () => {
       onSearch={handleSearch}
       items={searchedStories}
       onRemoveItem={handleRemoveItem}
+      isLoading={isLoading}
+      isError={isError}
     />
   )
 }
