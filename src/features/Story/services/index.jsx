@@ -25,3 +25,12 @@ export const filterStoriesByTitle = (collection, title) => {
         return lowerCaseStoryTitle.includes(lowerCaseTitle)
     })
 }
+
+export const getAsyncStories = () => {
+    return new Promise((resolve) => {
+        setTimeout(
+            () => resolve({ data: { stories: initialStories } }),
+            2000
+        )
+    })
+}
