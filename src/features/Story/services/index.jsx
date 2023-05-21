@@ -1,4 +1,4 @@
-export const stories = [
+export const initialStories = [
     {
         title: 'React',
         url: 'https://reactjs.org',
