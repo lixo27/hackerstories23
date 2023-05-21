@@ -1,21 +1,14 @@
-import Proptypes from 'prop-types'
+import { listType, listItemType } from "./types"
 
 const List = ({ items, onRemoveItem }) => (
     <ul>
         {items.map((item) => (
-            <ListItem key={item.objectID} item={item} onRemove={onRemoveItem} />
+            <ListItem key={item.objectID} item={item} onRemoveItem={onRemoveItem} />
         ))}
     </ul>
 )
 
-List.propTypes = {
-    items: Proptypes.array,
-    onRemoveItem: Proptypes.func,
-}
-
-export default List
-
-const ListItem = ({ item, onRemove }) => {
+const ListItem = ({ item, onRemoveItem }) => {
     const { url, title, author, num_comments, points } = item
 
     return (
@@ -28,7 +21,7 @@ const ListItem = ({ item, onRemove }) => {
             <span>{points}</span>
             <span>
                 <button type='button' onClick={() => {
-                    onRemove(item)
+                    onRemoveItem(item)
                 }}>
                     Dismiss
                 </button>
@@ -37,13 +30,7 @@ const ListItem = ({ item, onRemove }) => {
     )
 }
 
-ListItem.propTypes = {
-    item: Proptypes.shape({
-        url: Proptypes.string,
-        title: Proptypes.string,
-        author: Proptypes.string,
-        num_comments: Proptypes.number,
-        points: Proptypes.number,
-    }),
-    onRemove: Proptypes.func,
-}
+List.propTypes = listType
+ListItem.propTypes = listItemType
+
+export default List

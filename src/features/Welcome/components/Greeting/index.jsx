@@ -1,12 +1,9 @@
-import Proptypes from 'prop-types'
+import { greetingType } from './types'
 
 const Greeting = ({ greeting, title }) => (
     <h1>{greeting}, {title}!</h1>
 )
 
-Greeting.propTypes = {
-    greeting: Proptypes.string,
-    title: Proptypes.string,
-}
+Greeting.propTypes = greetingType
 
 export default Greeting

@@ -1,4 +1,4 @@
-import Proptypes from 'prop-types'
+import { searchType } from './types'
 import InputText from '../../../../components/InputText'
 
 const Search = ({ searchTerm, onSearch, hasSearchFocus }) => (
@@ -11,10 +11,6 @@ const Search = ({ searchTerm, onSearch, hasSearchFocus }) => (
   </>
 )
 
-Search.propTypes = {
-  hasSearchFocus: Proptypes.bool,
-  onSearch: Proptypes.func,
-  searchTerm: Proptypes.string,
-}
+Search.propTypes = searchType
 
 export default Search

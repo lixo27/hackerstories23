@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import Proptypes from 'prop-types'
+import { inputTextType } from './types'
 
 const InputText = ({ id, value, onChange, hasFocus, children }) => {
     const inputRef = useRef()
@@ -24,12 +24,6 @@ const InputText = ({ id, value, onChange, hasFocus, children }) => {
     )
 }
 
-InputText.propTypes = {
-    id: Proptypes.string,
-    value: Proptypes.string,
-    onChange: Proptypes.func,
-    hasFocus: Proptypes.bool,
-    children: Proptypes.object,
-}
+InputText.propTypes = inputTextType
 
 export default InputText

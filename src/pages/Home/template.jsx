@@ -1,7 +1,7 @@
-import Proptypes from 'prop-types'
 import List from '../../features/Story/components/List'
 import Search from '../../features/Story/components/Search'
 import Greeting from '../../features/Welcome/components/Greeting'
+import { templateType } from './types'
 
 const Template = ({ welcome, searchTerm, onSearch, items, onRemoveItem }) => (
   <>
@@ -13,12 +13,6 @@ const Template = ({ welcome, searchTerm, onSearch, items, onRemoveItem }) => (
   </>
 )
 
-Template.propTypes = {
-  welcome: Proptypes.object,
-  searchTerm: Proptypes.string,
-  onSearch: Proptypes.func,
-  items: Proptypes.array,
-  onRemoveItem: Proptypes.func,
-}
+Template.propTypes = templateType
 
 export default Template
